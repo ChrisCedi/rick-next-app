@@ -2,18 +2,13 @@
 import Image from "next/image";
 import { Card, CardHeader, CardContent, CardTitle } from "../ui/card";
 import { motion } from "framer-motion";
+import { type Character } from "@/types/types";
 
-interface CardProps {
-  character: {
-    id: string;
-    name: string;
-    gender: string;
-    status: string;
-    image: string;
-  };
+interface CharacterCardProps {
+  character: Character;
 }
 
-export function CharacterCard({ character }: CardProps) {
+export function CharacterCard({ character }: CharacterCardProps) {
   return (
     <motion.div whileHover={{ scale: 1.05 }} className="cursor-pointer">
       <Card>

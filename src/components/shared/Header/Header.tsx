@@ -11,7 +11,7 @@ export function Header() {
   const router = useRouter();
 
   return (
-    <div className="bg-black w-full fixed h-16 px-8 md:px-20 flex items-center justify-between">
+    <div className="bg-black w-full fixed h-16 px-8 md:px-20 flex items-center justify-between z-10">
       <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
         <Image
           onClick={() => router.push("/")}
