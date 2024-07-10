@@ -1,3 +1,4 @@
+import { Container } from "@/components/shared/Container";
 export default function FavoritesPage() {
-  return <div>Favorites</div>;
+  return <Container>Favorites</Container>;
 }

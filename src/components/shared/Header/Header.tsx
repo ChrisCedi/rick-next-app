@@ -19,6 +19,7 @@ export function Header() {
           width={110}
           height={30}
           alt="rick-logo"
+          priority
           className="cursor-pointer"
           style={{
             width: "auto",
@@ -34,7 +35,7 @@ export function Header() {
             key={route.label}
             className={`${
               pathname === route.path ? "text-primary" : "text-white"
-            } mr-4 font-semibold`}
+            } mr-2 md:mr-4 font-semibold`}
           >
             {route.label}
           </Link>
