@@ -1,12 +1,15 @@
 import { Button } from "@/components/ui/button";
+import { Title } from "@/components/shared/Title";
+import { Container } from "@/components/shared/Container";
+import { CharacterList } from "@/components/Home/CharacterList";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center p-24">
-      <p className="text-2xl text-primary font-semibold">
-        Rick and Morty with Next js and Graphql
-      </p>
-      <Button>Iniciar</Button>
+    <main>
+      <Container>
+        <Title title="Rick and Morty App" />
+        <CharacterList />
+      </Container>
     </main>
   );
 }
