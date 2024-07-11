@@ -6,12 +6,13 @@ import { type Character } from "@/types/types";
 
 interface CharacterCardProps {
   character: Character;
+  action?: () => void;
 }
 
-export function CharacterCard({ character }: CharacterCardProps) {
+export function CharacterCard({ character, action }: CharacterCardProps) {
   return (
     <motion.div whileHover={{ scale: 1.05 }} className="cursor-pointer">
-      <Card>
+      <Card onClick={action && action}>
         <CardHeader>
           <CardTitle>{character.name}</CardTitle>
         </CardHeader>
@@ -28,8 +29,18 @@ export function CharacterCard({ character }: CharacterCardProps) {
             </div>
             <div className="pl-6">
               <p className="font-semibold pb-4">Information</p>
-              <p>Gender: {character.gender}</p>
-              <p>Status: {character.status}</p>
+              <p>
+                <b>Gender: </b> {character.gender}
+              </p>
+              <p
+                className={`${
+                  character.status === "Alive"
+                    ? "text-green-700"
+                    : "text-red-400"
+                }`}
+              >
+                <b className="text-black">Status: </b> {character.status}
+              </p>
             </div>
           </div>
         </CardContent>
