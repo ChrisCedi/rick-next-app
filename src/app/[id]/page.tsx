@@ -5,6 +5,7 @@ import { getClient } from "@/lib/ApolloClient";
 import { GET_CHARACTER_BY_ID } from "@/querys/getCharacterById";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import { FavoriteActions } from "@/components/characterDetails/FavoriteActions";
 
 async function getCharacter(id: string) {
   const { data } = await getClient().query({
@@ -34,7 +35,7 @@ export default async function CharacterDetail({
             width={90}
             height={90}
             alt="image-character"
-            className="rounded-full"
+            className="rounded-3xl"
             style={{
               height: "85%",
               width: "85%",
@@ -58,10 +59,7 @@ export default async function CharacterDetail({
           >
             <b className={`text-primary`}>Status: </b> {character.status}
           </p>
-          <Button className="bg-green-500 hover:bg-green-600">
-            Agregar a favoritos
-          </Button>
-          <Button variant={"destructive"}>Quitar de favoritos</Button>
+          <FavoriteActions character={character} />
         </div>
       </div>
     </Container>
