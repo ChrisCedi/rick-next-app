@@ -19,4 +19,5 @@ export interface CharacterStore {
   favorites: Character[];
   addFavorite: (character: Character) => void;
   removeFavorite: (id: string) => void;
+  reorderFavorites: (list: Character[]) => void;
 }
