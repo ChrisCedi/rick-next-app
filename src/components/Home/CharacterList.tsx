@@ -1,11 +1,12 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 import { CharacterCard } from "../shared/CharacterCard";
 import { useSuspenseQuery } from "@apollo/client";
 import { type CharactersData } from "@/types/types";
 import { GET_CHARACTERS_BY_PAGE_AND_NAME } from "@/querys/queryCharacters";
 import { Pagination } from "./Pagination";
+import { Input } from "../ui/input";
 
 export function CharacterList() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -26,10 +27,20 @@ export function CharacterList() {
     setCurrentPage((prev) => prev - 1);
   };
 
-  console.log(data.characters);
+  const handleSearh = (value: string) => {
+    setSearchName(value);
+  };
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchName]);
 
   return (
     <div>
+      <Input
+        placeholder="Buscar personaje"
+        onChange={(e) => handleSearh(e.target.value)}
+      />
       <Pagination
         currentPage={currentPage}
         nextPage={nextPage}

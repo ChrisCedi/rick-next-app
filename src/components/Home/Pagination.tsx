@@ -14,7 +14,6 @@ export function Pagination({
   nextPage,
   totalPages,
 }: PaginationProps) {
-  console.log(totalPages);
   return (
     <div className="flex items-center justify-between mt-10">
       <Button onClick={previousPage} disabled={currentPage === 1} size="sm">
