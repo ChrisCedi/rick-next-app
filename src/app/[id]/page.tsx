@@ -4,18 +4,26 @@ import { Title } from "@/components/shared/Title";
 import { getClient } from "@/lib/ApolloClient";
 import { GET_CHARACTER_BY_ID } from "@/querys/getCharacterById";
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
 import { FavoriteActions } from "@/components/characterDetails/FavoriteActions";
 
 async function getCharacter(id: string) {
-  const { data } = await getClient().query({
-    query: GET_CHARACTER_BY_ID,
-    variables: {
-      id,
-    },
-  });
+  try {
+    const { data } = await getClient().query({
+      query: GET_CHARACTER_BY_ID,
+      variables: {
+        id,
+      },
+    });
 
-  return data.character;
+    if (!data || !data.character) {
+      throw new Error("Character not found");
+    }
+
+    return data.character;
+  } catch (error) {
+    console.error("Error fetching character:", error);
+    return null;
+  }
 }
 
 export default async function CharacterDetail({

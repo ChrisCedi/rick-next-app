@@ -13,7 +13,7 @@ export function CharacterList() {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchName, setSearchName] = useState("");
 
-  const { data } = useSuspenseQuery<CharactersData>(
+  const { error, data } = useSuspenseQuery<CharactersData>(
     GET_CHARACTERS_BY_PAGE_AND_NAME,
     {
       variables: { page: currentPage, name: searchName },
@@ -35,6 +35,8 @@ export function CharacterList() {
   useEffect(() => {
     setCurrentPage(1);
   }, [searchName]);
+
+  if (error) return <p>Error: {error.message}</p>;
 
   return (
     <div>
